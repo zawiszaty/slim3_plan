@@ -1,0 +1,49 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <td>godzina</td>
+                <td>poniedzialek</td>
+                <td>sala</td>
+                <td>wtorek</td>
+                <td>sala</td>
+                <td>sroda</td>
+                <td>sala</td>
+                <td>czwartek</td>
+                <td>sala</td>
+                <td>piatek</td>
+                <td>sala</td>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <div class="form-group">
+
+                {% for item in singleClass %}
+
+                    <tr>
+                        <td>{{  item.godzina}} </td>
+                        <td>{{  item.poniedzialek}} </td>
+                        <td>{{  item.sala_p}} </td>
+                        <td>{{  item.wtorek}} </td>
+                        <td>{{  item.sala_w}} </td>
+                        <td>{{  item.sroda}} </td>
+                        <td>{{  item.sala_s}} </td>
+                        <td>{{  item.czwartek}} </td>
+                        <td>{{  item.sala_cz}} </td>
+                        <td>{{  item.piatek}} </td>
+                        <td>{{  item.sala_pi}} </td>
+                    </tr>
+
+                {% endfor %}
+
+            </div>
+            </tbody>
+        </table>
+
+
+{% endblock %}

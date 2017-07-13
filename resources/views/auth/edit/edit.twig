@@ -1,0 +1,111 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-lg-4">
+
+   <button class="btn btn-block"> Zawodowa</button>
+</div>
+
+    <div class="col-lg-4">
+
+        <button class="btn btn-block"> Technikum</button>
+    </div>
+
+    <div class="col-lg-4">
+
+        <button class="btn btn-block"> Liceum</button>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-4">
+
+
+        {% for item in zawodowa %}
+
+            <a class="btn btn-block btn-default" href="edit/{{ item.name }}">  {{ item.name }}</a>
+
+
+        {% endfor %}
+    </div>
+
+    <div class="col-lg-4">
+
+        {% for item in technikum %}
+
+            <a class="btn btn-block btn-default" href="edit/{{ item.name }}">  {{ item.name }}</a>
+
+
+        {% endfor %}
+    </div>
+
+    <div class="col-lg-4">
+
+        {% for item in liceum %}
+
+            <a class="btn btn-block btn-default"  href="edit/{{ item.name }}">  {{ item.name }}</a>
+
+
+        {% endfor %}
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <form action="{{ path_for('addClass') }}" method="post">
+            <div class="form-group {{ errors.newClass ? 'has-error' : '' }}">
+            <label for="newClass">Podaj nazwe nowej klasy</label>
+            <input class="form-control" type="text" name="newClass" id="newClass">
+                {% if errors.newClass %}
+                    <div class="help-block">{{ errors.newClass | first}}</div>
+                {% endif %}
+                <label for="selectAdd">Podaj typ szkoły</label>
+                <select class="form-control" name="selectAdd" id="selectAdd">
+                    <option>szkola_zawodowa</option>
+                    <option>technikum</option>
+                    <option>liceum</option>
+                </select>
+                <br>
+                <button class="btn btn-default btn-block" type="submit">Dodaj klase</button>
+
+            </div>
+                {{ csrf.field |raw  }}
+            </form>
+        </div>
+
+        <div class="col-lg-6">
+
+            <form action="{{ path_for('delClass') }}" method="post">
+                <div class="form-group">
+                    <label for="selectDel">Wybierz klase do usuniecia</label>
+
+
+                <select class="form-control" name="selectDel">
+                    {% for item in zawodowa %}
+
+                      <option>  {{ item.name }}</option>
+
+
+                    {% endfor %}
+                    {% for item in technikum %}
+
+                        <option>  {{ item.name }}</option>
+
+
+                    {% endfor %}
+                    {% for item in liceum %}
+
+                        <option>  {{ item.name }}</option>
+
+
+                    {% endfor %}
+                </select>
+                <br>
+                <button class="btn btn-default btn-block" type="submit">Usuń klase</button>
+                </div>
+                {{ csrf.field |raw  }}
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

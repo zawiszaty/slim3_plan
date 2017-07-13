@@ -1,0 +1,50 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+    <form action="{{ path_for('update') }}" method="post">
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <td>godzina</td>
+            <td>poniedzialek</td>
+            <td>sala</td>
+            <td>wtorek</td>
+            <td>sala</td>
+            <td>sroda</td>
+            <td>sala</td>
+            <td>czwartek</td>
+            <td>sala</td>
+            <td>piatek</td>
+            <td>sala</td>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <div class="form-group">
+
+    {% for item in singleClass %}
+
+    <tr>
+<td><input type="text" class="form-control" name="godzina{{ item.id }}" id="godzina{{ item.id }}" value="{{  item.godzina}}"> </td>
+        <td><input type="text" class="form-control" name="poniedzialek{{ item.id }}" id="poniedzialek{{ item.id }}" value="{{  item.poniedzialek}}"> </td>
+        <td><input type="text" class="form-control" name="sala_p{{ item.id }}" id="sala_p{{ item.id }}" value="{{  item.sala_p}}"> </td>
+        <td><input type="text" class="form-control" name="wtorek{{ item.id }}" id="wtorek{{ item.id }}" value="{{  item.wtorek}}"> </td>
+        <td><input type="text" class="form-control" name="sala_w{{ item.id }}" id="sala_w{{ item.id }}" value="{{  item.sala_w}}"> </td>
+        <td><input type="text" class="form-control" name="sroda{{ item.id }}" id="sroda{{ item.id }}" value="{{  item.sroda}}"> </td>
+        <td><input type="text" class="form-control" name="sala_s{{ item.id }}" id="sala_s{{ item.id }}" value="{{  item.sala_s}}"> </td>
+        <td><input type="text" class="form-control" name="czwartek{{ item.id }}" id="czwartek{{ item.id }}" value="{{  item.czwartek}}"> </td>
+        <td><input type="text" class="form-control" name="sala_cz{{ item.id }}" id="sala_cz{{ item.id }}" value="{{  item.sala_cz}}"> </td>
+        <td><input type="text" class="form-control" name="piatek{{ item.id }}" id="piatek{{ item.id }}" value="{{  item.piatek}}"> </td>
+        <td><input type="text" class="form-control" name="sala_pi{{ item.id }}" id="sala_pi{{ item.id }}" value="{{  item.sala_pi}}"> </td>
+    </tr>
+
+    {% endfor %}
+
+        </div>
+        </tbody>
+    </table>
+    <button  type="submit" class="btn btn-block btn-default">Zmień</button>
+        {{ csrf.field |raw  }}
+    </form>
+{% endblock %}

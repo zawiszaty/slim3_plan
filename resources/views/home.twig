@@ -1,0 +1,55 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+
+
+    <div class="row">
+        <div class="col-lg-4">
+
+            <button class="btn btn-block"> Zawodowa</button>
+        </div>
+
+        <div class="col-lg-4">
+
+            <button class="btn btn-block"> Technikum</button>
+        </div>
+
+        <div class="col-lg-4">
+
+            <button class="btn btn-block"> Liceum</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+
+
+            {% for item in zawodowa %}
+
+                <a class="btn btn-block btn-default" href="home/{{ item.name }}">  {{ item.name }}</a>
+
+
+            {% endfor %}
+        </div>
+
+        <div class="col-lg-4">
+
+            {% for item in technikum %}
+
+                <a class="btn btn-block btn-default" href="home/{{ item.name }}">  {{ item.name }}</a>
+
+
+            {% endfor %}
+        </div>
+
+        <div class="col-lg-4">
+
+            {% for item in liceum %}
+
+                <a class="btn btn-block btn-default"  href="home/{{ item.name }}">  {{ item.name }}</a>
+
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
